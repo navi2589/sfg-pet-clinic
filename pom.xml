@@ -46,6 +46,6 @@
 
 
   <scm>
-    <tag>0.0.1</tag>
+    <developerConnection>scm:git:git@https://github.com/navi2589/sfg-pet-clinic.git</developerConnection>
   </scm>
 </project>
