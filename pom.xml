@@ -46,6 +46,6 @@
 
 
   <scm>
-    <developerConnection>scm:git:git@https://github.com/navi2589/sfg-pet-clinic.git</developerConnection>
+    <developerConnection>scm:git:git@github.com:navi2589/sfg-pet-clinic.git</developerConnection>
   </scm>
 </project>
