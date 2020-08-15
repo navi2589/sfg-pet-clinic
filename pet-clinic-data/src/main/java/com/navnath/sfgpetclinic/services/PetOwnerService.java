@@ -4,10 +4,7 @@ import com.navnath.sfgpetclinic.model.PetOwner;
 
 import java.util.Set;
 
-public interface PetOwnerService {
+public interface PetOwnerService extends CurdService<PetOwner,Long> {
 
     PetOwner findByLastName(String lastname);
-    PetOwner findById(Long id);
-    PetOwner save(PetOwner petOwner);
-    Set<PetOwner> findAll();
 }
