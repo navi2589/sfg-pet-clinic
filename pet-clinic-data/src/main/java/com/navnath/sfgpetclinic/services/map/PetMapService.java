@@ -2,10 +2,13 @@ package com.navnath.sfgpetclinic.services.map;
 
 import com.navnath.sfgpetclinic.model.Pet;
 import com.navnath.sfgpetclinic.services.CurdService;
+import com.navnath.sfgpetclinic.services.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class PetMapService extends  AbstractMapService<Pet, Long> implements CurdService<Pet,Long> {
+@Service
+public class PetMapService extends  AbstractMapService<Pet, Long> implements PetService{
     @Override
     public Set<Pet> findAll() {
         return super.findAll();

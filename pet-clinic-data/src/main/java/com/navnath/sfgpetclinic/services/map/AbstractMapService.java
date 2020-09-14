@@ -8,7 +8,8 @@ import java.util.Set;
 public abstract  class AbstractMapService<T, ID> {
     Map<ID,T> map = new HashMap<>();
 
-    protected Set<T> findAll(){
+    protected Set<T> findAll()
+    {
         return  new HashSet<>(map.values());
     }
 
@@ -21,7 +22,8 @@ public abstract  class AbstractMapService<T, ID> {
         return  object;
     }
 
-    protected void delete( T object){
+    protected void delete( T object)
+    {
         map.entrySet().removeIf(entry-> entry.getValue().equals(object));
     }
 

@@ -2,10 +2,13 @@ package com.navnath.sfgpetclinic.services.map;
 
 import com.navnath.sfgpetclinic.model.PetOwner;
 import com.navnath.sfgpetclinic.services.CurdService;
+import com.navnath.sfgpetclinic.services.PetOwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class PetOwnerMapService extends AbstractMapService<PetOwner,Long> implements CurdService<PetOwner,Long> {
+@Service
+public class PetOwnerMapService extends AbstractMapService<PetOwner,Long> implements PetOwnerService {
     @Override
     public Set<PetOwner> findAll() {
         return super.findAll();
@@ -29,5 +32,10 @@ public class PetOwnerMapService extends AbstractMapService<PetOwner,Long> implem
     @Override
     public PetOwner findById(Long id) {
         return super.findById(id);
+    }
+
+    @Override
+    public PetOwner findByLastName(String lastname) {
+        return null;
     }
 }
