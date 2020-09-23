@@ -22,13 +22,13 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        PetOwner petOwner1 =  new PetOwner();
+        PetOwner petOwner1 = new PetOwner();
         petOwner1.setFirstName("Navnath");
         petOwner1.setLastName("Chincore");
         petOwnerService.save(petOwner1);
 
 
-        PetOwner petOwner2 =  new PetOwner();
+        PetOwner petOwner2 = new PetOwner();
         petOwner2.setFirstName("Subhash");
         petOwner2.setLastName("Chincore");
         petOwnerService.save(petOwner2);
