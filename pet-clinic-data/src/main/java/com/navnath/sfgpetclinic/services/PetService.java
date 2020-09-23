@@ -5,5 +5,5 @@ import com.navnath.sfgpetclinic.model.PetOwner;
 
 import java.util.Set;
 
-public interface PetService  extends  CurdService<Pet,Long> {
+public interface PetService extends CurdService<Pet, Long> {
 }
