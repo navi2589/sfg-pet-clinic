@@ -3,6 +3,7 @@ package com.navnath.sfgpetclinic.model;
 import java.time.LocalDate;
 
 public class Visit extends  BaseEntity {
+
     private LocalDate visitDate;
     private String description;
     private Pet pet;
