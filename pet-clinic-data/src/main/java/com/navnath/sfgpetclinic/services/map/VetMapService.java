@@ -1,5 +1,6 @@
 package com.navnath.sfgpetclinic.services.map;
 
+import com.navnath.sfgpetclinic.model.Speciality;
 import com.navnath.sfgpetclinic.model.Vet;
 import com.navnath.sfgpetclinic.services.CurdService;
 import com.navnath.sfgpetclinic.services.SpecialityService;
@@ -38,7 +39,8 @@ public class VetMapService extends AbstractMapService<Vet, Long> implements VetS
             if(Objects.nonNull(object.getSpecialities())){
                 object.getSpecialities().forEach(speciality -> {
                     if(Objects.isNull(speciality.getId())){
-                        object.getSpecialities().add(specialityService.save(speciality));
+                        Speciality savedSpeciality = specialityService.save(speciality);
+                        speciality.setId(savedSpeciality.getId());
                     }
                 });
             } else{
