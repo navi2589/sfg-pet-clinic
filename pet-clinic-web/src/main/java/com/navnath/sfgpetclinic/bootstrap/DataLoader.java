@@ -1,9 +1,6 @@
 package com.navnath.sfgpetclinic.bootstrap;
 
-import com.navnath.sfgpetclinic.model.Pet;
-import com.navnath.sfgpetclinic.model.PetOwner;
-import com.navnath.sfgpetclinic.model.PetType;
-import com.navnath.sfgpetclinic.model.Vet;
+import com.navnath.sfgpetclinic.model.*;
 import com.navnath.sfgpetclinic.services.PetOwnerService;
 import com.navnath.sfgpetclinic.services.PetTypeService;
 import com.navnath.sfgpetclinic.services.VetService;
@@ -67,6 +64,9 @@ public class DataLoader implements CommandLineRunner {
         Vet vet1 = new Vet();
         vet1.setFirstName("Ravi");
         vet1.setLastName("Chinchore");
+        Speciality vetSpeciality =  new Speciality();
+        vetSpeciality.setDescription("Medicine");
+        vet1.getSpecialities().add(vetSpeciality);
         vetService.save(vet1);
 
         Vet vet2 = new Vet();
