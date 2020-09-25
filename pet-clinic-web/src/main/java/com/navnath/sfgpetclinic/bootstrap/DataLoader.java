@@ -1,5 +1,6 @@
 package com.navnath.sfgpetclinic.bootstrap;
 
+import com.navnath.sfgpetclinic.model.Pet;
 import com.navnath.sfgpetclinic.model.PetOwner;
 import com.navnath.sfgpetclinic.model.PetType;
 import com.navnath.sfgpetclinic.model.Vet;
@@ -8,6 +9,8 @@ import com.navnath.sfgpetclinic.services.PetTypeService;
 import com.navnath.sfgpetclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -36,12 +39,28 @@ public class DataLoader implements CommandLineRunner {
         PetOwner petOwner1 = new PetOwner();
         petOwner1.setFirstName("Navnath");
         petOwner1.setLastName("Chincore");
+        petOwner1.setAddress("Loha");
+        petOwner1.setCity("Loha");
+        petOwner1.setTelephone("908080880");
+        Pet navnathPet = new Pet();
+        navnathPet.setName("Navi");
+        navnathPet.setPetType(savedDogPetType);
+        navnathPet.setBirthDate(LocalDate.now());
+        petOwner1.getPets().add(navnathPet);
         petOwnerService.save(petOwner1);
 
 
         PetOwner petOwner2 = new PetOwner();
         petOwner2.setFirstName("Subhash");
         petOwner2.setLastName("Chincore");
+        petOwner1.setAddress("Nanded");
+        petOwner1.setCity("Loha");
+        petOwner1.setTelephone("8087557408");
+        Pet subhashPet = new Pet();
+        subhashPet.setName("Navi");
+        subhashPet.setPetType(savedCatPetType);
+        subhashPet.setBirthDate(LocalDate.now());
+        petOwner2.getPets().add(subhashPet);
         petOwnerService.save(petOwner2);
         System.out.println("..... petowner  Loaded");
 
