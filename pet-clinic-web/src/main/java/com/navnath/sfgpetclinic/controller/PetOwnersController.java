@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/petowners")
+@RequestMapping("/owners")
 @Controller
 public class PetOwnersController {
 
@@ -19,5 +19,10 @@ public class PetOwnersController {
     String getPetOwnerList(Model model) {
         model.addAttribute("petOwners", petOwnerService.findAll());
         return "petowners/index";
+    }
+
+    @RequestMapping("/find")
+    String findPetOwners(){
+        return "notImplementedYet";
     }
 }
