@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 @Entity
-@Table(name = "pet_owner")
+@Table(name = "pet_owners")
 public class PetOwner extends Person {
 
     @Column(name = "address")
