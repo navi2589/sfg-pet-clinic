@@ -103,8 +103,6 @@ public class DataLoader implements CommandLineRunner {
         raviVet.getSpecialities().addAll(new HashSet<>(Arrays.asList(savedDentistry, savedMedicine,savedRediology)));
         vetService.save(raviVet);
 
-
-
         Vet sunilVet = new Vet();
         sunilVet.setFirstName("Sunil");
         sunilVet.setLastName("Chinchore");
