@@ -6,12 +6,14 @@ import com.navnath.sfgpetclinic.services.CurdService;
 import com.navnath.sfgpetclinic.services.PetOwnerService;
 import com.navnath.sfgpetclinic.services.PetService;
 import com.navnath.sfgpetclinic.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 import java.util.Set;
 
 @Service
+@Profile({"default","map"})
 public class PetOwnerMapService extends AbstractMapService<PetOwner, Long> implements PetOwnerService {
 
     private final PetTypeService petTypeService;

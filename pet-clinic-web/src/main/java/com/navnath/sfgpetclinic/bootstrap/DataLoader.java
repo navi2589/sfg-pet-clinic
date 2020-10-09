@@ -1,14 +1,12 @@
 package com.navnath.sfgpetclinic.bootstrap;
 
 import com.navnath.sfgpetclinic.model.*;
-import com.navnath.sfgpetclinic.services.PetOwnerService;
-import com.navnath.sfgpetclinic.services.PetTypeService;
-import com.navnath.sfgpetclinic.services.SpecialityService;
-import com.navnath.sfgpetclinic.services.VetService;
+import com.navnath.sfgpetclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -19,12 +17,14 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
-    public DataLoader(PetOwnerService petOwnerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(PetOwnerService petOwnerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
         this.petOwnerService = petOwnerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class DataLoader implements CommandLineRunner {
         PetType savedDogPetType = petTypeService.save(dog);
 
         PetType cat = new PetType();
-        cat.setName("Dog");
+        cat.setName("Cat");
         PetType savedCatPetType = petTypeService.save(cat);
 
         Speciality rediology =  new Speciality();
@@ -57,45 +57,59 @@ public class DataLoader implements CommandLineRunner {
         dentistry.setDescription("Dentistry");
         Speciality savedDentistry = specialityService.save(dentistry);
 
-        PetOwner petOwner1 = new PetOwner();
-        petOwner1.setFirstName("Navnath");
-        petOwner1.setLastName("Chincore");
-        petOwner1.setAddress("Loha");
-        petOwner1.setCity("Loha");
-        petOwner1.setTelephone("908080880");
+        PetOwner navnath = new PetOwner();
+        navnath.setFirstName("Navnath");
+        navnath.setLastName("Chincore");
+        navnath.setAddress("Loha");
+        navnath.setCity("Loha");
+        navnath.setTelephone("908080880");
         Pet navnathPet = new Pet();
         navnathPet.setName("Navi");
         navnathPet.setPetType(savedDogPetType);
         navnathPet.setBirthDate(LocalDate.now());
-        petOwner1.getPets().add(navnathPet);
-        petOwnerService.save(petOwner1);
+        navnath.getPets().add(navnathPet);
+        navnathPet.setPetOwner(navnath);
+        petOwnerService.save(navnath);
 
 
-        PetOwner petOwner2 = new PetOwner();
-        petOwner2.setFirstName("Subhash");
-        petOwner2.setLastName("Chincore");
-        petOwner1.setAddress("Nanded");
-        petOwner1.setCity("Loha");
-        petOwner1.setTelephone("8087557408");
+        PetOwner subhash = new PetOwner();
+        subhash.setFirstName("Subhash");
+        subhash.setLastName("Chincore");
+        subhash.setAddress("Nanded");
+        subhash.setCity("Loha");
+        subhash.setTelephone("8087557408");
+
         Pet subhashPet = new Pet();
         subhashPet.setName("Navi");
         subhashPet.setPetType(savedCatPetType);
         subhashPet.setBirthDate(LocalDate.now());
-        petOwner2.getPets().add(subhashPet);
-        petOwnerService.save(petOwner2);
+        subhashPet.setPetOwner(subhash);
+        subhash.getPets().add(subhashPet);
+        petOwnerService.save(subhash);
+
+        Visit subhashPetVisit = new Visit();
+        subhashPetVisit.setPet(subhashPet);
+        subhashPetVisit.setDescription("Snizzy cat");
+        subhashPetVisit.setVisitDate(LocalDate.now());
+        visitService.save(subhashPetVisit);
+
+
+
         System.out.println("..... petowner  Loaded");
 
-        Vet vet1 = new Vet();
-        vet1.setFirstName("Ravi");
-        vet1.setLastName("Chinchore");
-        vet1.getSpecialities().addAll(new HashSet<>(Arrays.asList(savedDentistry, savedMedicine,savedRediology)));
-        vetService.save(vet1);
+        Vet raviVet = new Vet();
+        raviVet.setFirstName("Ravi");
+        raviVet.setLastName("Chinchore");
+        raviVet.getSpecialities().addAll(new HashSet<>(Arrays.asList(savedDentistry, savedMedicine,savedRediology)));
+        vetService.save(raviVet);
 
-        Vet vet2 = new Vet();
-        vet2.setFirstName("Sunil");
-        vet2.setLastName("Chinchore");
-        vet2.getSpecialities().addAll(new HashSet<>(Arrays.asList(savedDentistry, savedMedicine,savedRediology)));
-        vetService.save(vet2);
+
+
+        Vet sunilVet = new Vet();
+        sunilVet.setFirstName("Sunil");
+        sunilVet.setLastName("Chinchore");
+        sunilVet.getSpecialities().addAll(new HashSet<>(Arrays.asList(savedDentistry, savedMedicine,savedRediology)));
+        vetService.save(sunilVet);
 
         System.out.println("..... Vet Loaded");
     }
