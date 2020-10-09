@@ -20,7 +20,7 @@ public class PetSDService implements PetService {
     @Override
     public Set<Pet> findAll() {
         Set<Pet> pets = new HashSet<>();
-        petRepository.findAll().forEach(pet-> pets.add(pet));
+        petRepository.findAll().forEach(pets::add);
         return pets;
     }
 
