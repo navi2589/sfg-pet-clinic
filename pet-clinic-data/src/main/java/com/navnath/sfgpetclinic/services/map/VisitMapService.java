@@ -17,8 +17,12 @@ public class VisitMapService extends  AbstractMapService<Visit,Long> implements 
     }
 
     @Override
-    public Visit save(Visit object) {
-        return super.save(object);
+    public Visit save(Visit visit) {
+        if(visit.getPet() == null || visit.getPet().getId() ==null
+        || visit.getPet().getPetOwner() == null || visit.getPet().getPetOwner().getId() == null){
+            throw  new RuntimeException("Invalid visit entity");
+        }
+        return super.save(visit);
     }
 
     @Override
