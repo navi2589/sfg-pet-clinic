@@ -73,6 +73,6 @@ public class PetOwnerMapService extends AbstractMapService<PetOwner, Long> imple
 
     @Override
     public PetOwner findByLastName(String lastname) {
-        return null;
+        return super.findAll().stream().filter(petOwner -> lastname.equalsIgnoreCase(petOwner.getLastName())).findAny().orElse(null);
     }
 }
